@@ -1,0 +1,15 @@
+demon-list/
+├── index.html
+├── levels.html
+├── players.html
+├── about.html
+├── css/
+│   └── style.css
+├── js/
+│   ├── app.js
+│   ├── data-levels.js
+│   ├── data-players.js
+│   ├── search.js
+│   └── details.js
+└── assets/
+    └── (пусто)
