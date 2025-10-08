@@ -7,105 +7,123 @@ function calculateLevelPoints(position) {
 window.levelsData = [
   {
     id: 1,
-    name: "Thinking Space II",
-    creator: "CairoX",
+    name: "Miha Difficult",
+    creator: "KuraTheGuy",
     position: 1,
     points: calculateLevelPoints(1), // 100,000.00
     details: {
-      description: "A mindscape of pure insanity, most fall to its brutal nature. Gameplay by CoCy team, deco hosted by Dr.Cuber, Verified by Zoink. Dedicated to Hideki <3",
-      length: 110,
-      objects: 139553,
+      description: "To difficult for Miha but STILL POSSIBLE FOR LUNA!!! // 14,818 Attempts",
+      length: 86,
+      objects: 29018,
       version: "2.2",
       password: "Free Copy",
-      music: "CD Browser",
+      music: "Electroman Adventures",
       originalID: 119544028
     },
     verification: {
-      verifiedBy: "Zoink",
-      verifiedAt: "2024-01-15"
+      verifiedBy: "SKOE",
+      verifiedAt: "2025-07-07"
     },
     youtubeLinks: [
       {
-        url: "https://youtu.be/example1",
+        url: "https://youtu.be/cLTTnC6Xkng",
         type: "verification",
-        title: "Thinking Space II Verification"
-      }
+        title: "Miha Difficult Verification"
+      },
     ],
-    positionHistory: [
-      { position: 1, date: "2024-01-15", reason: "Initial placement" }
-    ]
   },
   {
     id: 2,
-    name: "Amethyst",
-    creator: "iMist",
+    name: "Void Storm",
+    creator: "NICEPEEK",
     position: 2,
     points: calculateLevelPoints(2), // 70,710.68
     details: {
-      description: "Crystalline perfection in demon form",
-      length: 98,
-      objects: 120450,
+      description: "GG 13k+ att :)",
+      length: 61,
+      objects: 21257,
       version: "2.2",
-      password: "AmethystCopy",
-      music: "Amethyst OST"
+      password: "Free Copy",
+      music: "cYsmix - Eden"
     },
     youtubeLinks: [
       {
-        url: "https://youtu.be/example2",
+        url: "https://youtu.be/e9LSoF0s6hE",
         type: "verification", 
-        title: "Amethyst Verification"
+        title: "Void Storm Verification"
       }
     ]
   },
   {
     id: 3,
-    name: "Tidal Wave",
-    creator: "OniLinkGD",
+    name: "Hard Times",
+    creator: "NICEPEEK",
     position: 3,
     points: calculateLevelPoints(3), // 57,735.03
     details: {
-      description: "Overwhelming wave of difficulty",
-      length: 105,
-      objects: 135000,
+      description: "Old school level with funny moments :D. VERIFIED BY : NICEPEEK",
+      length: 97,
+      objects: 14504,
       version: "2.2",
-      password: "TidalCopy",
-      music: "Tidal OST"
-    }
+      password: "Free Copy",
+      music: "Time Machine"
+    },
+    youtubeLinks: [
+      {
+        url: "https://youtu.be/A04oMiiQnew?si=PBxj2J96U8oAqi3L",
+        type: "verification",
+        title: "Hard Times Verification"
+      }
+    ]
   },
   {
     id: 4,
-    name: "Nullscapes",
-    creator: "ItzKiba",
+    name: "Ts Feeling",
+    creator: "yoyechka",
     position: 4,
     points: calculateLevelPoints(4), // 50,000.00
     details: {
-      description: "Journey through empty landscapes",
-      length: 95,
-      objects: 110000,
+      description: "verified by me",
+      length: 56,
+      objects: 7189,
       version: "2.2",
-      password: "NullCopy",
-      music: "Nullscapes OST"
-    }
+      password: "Free Copy",
+      music: "Cant Fight Ts Feeling"
+    },
+    youtubeLinks: [
+      {
+        url: "https://youtu.be/sVC_Qg-EgNo",
+        type: "verification",
+        title: "Ts Feeling Verification"
+      }
+    ]
   },
   {
     id: 5,
-    name: "Silent Clubstep",
-    creator: "TheRealSailent",
+    name: "Millioner",
+    creator: "NICEPEEK",
     position: 5,
     points: calculateLevelPoints(5), // 44,721.36
     details: {
-      description: "The silent killer",
-      length: 120,
-      objects: 150000,
+      description: "My first and best solo project ever! 18k+ object, i think theres to many objects for this level. Verified by :NICEPEEK :)",
+      length: 51,
+      objects: 19637,
       version: "2.2",
-      password: "SilentCopy",
-      music: "Clubstep"
-    }
+      password: "Free Copy",
+      music: "Unknown"
+    },
+    youtubeLinks: [
+      {
+        url: "https://www.youtube.com/watch?v=Ivr7EPS7MxM",
+        type: "verification",
+        title: "Millioner Verification"
+      }
+    ]
   },
   {
     id: 6,
-    name: "Acheron",
-    creator: "Ryder",
+    name: "No Drop",
+    creator: "MaskExE",
     position: 6,
     points: calculateLevelPoints(6), // 40,824.83
     details: {
@@ -113,9 +131,16 @@ window.levelsData = [
       length: 108,
       objects: 140000,
       version: "2.2", 
-      password: "AcheronCopy",
+      password: "Free Copy",
       music: "Acheron OST"
-    }
+    },
+    youtubeLinks: [
+      {
+        url: "https://youtu.be/kRIl4861V_c",
+        type: "verification",
+        title: "No Drop Verification"
+      }
+    ]
   },
   {
     id: 7,
@@ -130,7 +155,14 @@ window.levelsData = [
       version: "2.2",
       password: "SlaughterCopy",
       music: "Slaughterhouse OST"
-    }
+    },
+    youtubeLinks: [
+      {
+        url: "https://youtu.be/dQw4w9WgXcQ",
+        type: "verification",
+        title: "Slaughterhouse Verification"
+      }
+    ]
   },
   {
     id: 8,
@@ -145,7 +177,14 @@ window.levelsData = [
       version: "2.2",
       password: "KyoukiCopy", 
       music: "Kyouki OST"
-    }
+    },
+    youtubeLinks: [
+      {
+        url: "https://youtu.be/dQw4w9WgXcQ",
+        type: "verification",
+        title: "Kyouki Verification"
+      }
+    ]
   },
   {
     id: 9,
@@ -160,7 +199,14 @@ window.levelsData = [
       version: "2.2",
       password: "FireworkCopy",
       music: "Firework OST"
-    }
+    },
+    youtubeLinks: [
+      {
+        url: "https://youtu.be/dQw4w9WgXcQ",
+        type: "verification",
+        title: "Firework Verification"
+      }
+    ]
   },
   {
     id: 10,
@@ -175,6 +221,13 @@ window.levelsData = [
       version: "2.2",
       password: "ArcturusCopy",
       music: "Arcturus OST"
-    }
+    },
+    youtubeLinks: [
+      {
+        url: "https://youtu.be/dQw4w9WgXcQ",
+        type: "verification",
+        title: "Arcturus Verification"
+      }
+    ]
   }
 ];

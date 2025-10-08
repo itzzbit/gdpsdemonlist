@@ -93,11 +93,51 @@ window.playersData = [
     points: 0,
     rank: 10,
     passedLevels: [8, 9, 10]
+  },
+  {
+    id: 11,
+    username: "CairoX",
+    country: "USA",
+    points: 0,
+    rank: 11,
+    passedLevels: [1, 3, 5, 7]
+  },
+  {
+    id: 12,
+    username: "Zoink",
+    country: "Sweden",
+    points: 0,
+    rank: 12,
+    passedLevels: [1, 2, 4, 6]
+  },
+  {
+    id: 13,
+    username: "iMist",
+    country: "Germany",
+    points: 0,
+    rank: 13,
+    passedLevels: [2, 4, 6, 8]
+  },
+  {
+    id: 14,
+    username: "OniLinkGD",
+    country: "USA",
+    points: 0,
+    rank: 14,
+    passedLevels: [3, 5, 7, 9]
+  },
+  {
+    id: 15,
+    username: "SpaceUK",
+    country: "UK",
+    points: 0,
+    rank: 15,
+    passedLevels: [4, 6, 8, 10]
   }
 ];
 
-// Функция для обновления очков игроков
-function updatePlayerPoints() {
+// Автоматический расчет очков после загрузки данных уровней
+function calculateAllPlayerPoints() {
     const levels = window.levelsData || [];
     
     // Пересчитываем очки для каждого игрока
@@ -106,23 +146,26 @@ function updatePlayerPoints() {
     });
     
     // Сортируем игроков по очкам (от большего к меньшему)
-    window.playersData.sort((a, b) => b.points - a.points);
+    const sortedPlayers = [...window.playersData].sort((a, b) => b.points - a.points);
     
     // Обновляем ранги
-    window.playersData.forEach((player, index) => {
+    sortedPlayers.forEach((player, index) => {
         player.rank = index + 1;
     });
+    
+    // Обновляем исходный массив
+    window.playersData = sortedPlayers;
 }
 
-// Автоматически обновляем очки при загрузке данных
+// Вызываем расчет очков когда данные уровней загружены
 if (window.levelsData && window.levelsData.length > 0) {
-    updatePlayerPoints();
+    calculateAllPlayerPoints();
 } else {
     // Если уровни еще не загружены, ждем их загрузки
     const checkLevelsLoaded = setInterval(() => {
         if (window.levelsData && window.levelsData.length > 0) {
-            updatePlayerPoints();
             clearInterval(checkLevelsLoaded);
+            calculateAllPlayerPoints();
         }
     }, 100);
 }
