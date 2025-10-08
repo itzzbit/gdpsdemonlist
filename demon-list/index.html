@@ -12,7 +12,6 @@
             <div class="nav-logo">DEMON LIST</div>
             <ul class="nav-menu">
                 <li><a href="index.html" class="nav-link active">Home</a></li>
-                <li><a href="levels.html" class="nav-link">Levels</a></li>
                 <li><a href="players.html" class="nav-link">Players</a></li>
                 <li><a href="about.html" class="nav-link">About</a></li>
             </ul>
@@ -20,29 +19,83 @@
     </nav>
 
     <main class="container">
-        <section>
-            <h2 class="section-title">Top Levels</h2>
-            <div class="levels-list" id="top-levels">
+        <div class="hero-section">
+            <h1 class="hero-title">Geometry Dash Demon List</h1>
+            <p class="hero-subtitle">Community-maintained ranking of the hardest levels</p>
+        </div>
+
+        <section class="top-section">
+            <h2 class="section-title">Demon List</h2>
+            <div class="levels-list" id="levels-container">
                 <!-- Levels will be loaded by JavaScript -->
-            </div>
-            <div style="text-align: center; margin-top: 2rem;">
-                <a href="levels.html" class="view-all-button">View All Levels</a>
-            </div>
-        </section>
-        
-        <section>
-            <h2 class="section-title">Top Players</h2>
-            <div class="players-list" id="top-players">
-                <!-- Players will be loaded by JavaScript -->
-            </div>
-            <div style="text-align: center; margin-top: 2rem;">
-                <a href="players.html" class="view-all-button">View All Players</a>
             </div>
         </section>
     </main>
 
     <script src="js/data-levels.js"></script>
     <script src="js/data-players.js"></script>
-    <script src="js/app.js"></script>
+    <script src="js/details.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Загружаем все уровни на главной странице
+            const levelsContainer = document.getElementById('levels-container');
+            
+            if (levelsContainer) {
+                const levels = window.levelsData || [];
+                levelsContainer.innerHTML = levels.map(level => `
+                    <div class="level-item" onclick="showLevelDetail(${level.id})">
+                        <div class="level-rank">#${level.position}</div>
+                        <div class="level-info">
+                            <div class="level-name">${level.name}</div>
+                            <div class="level-creator">${level.creator}</div>
+                        </div>
+                        <div class="level-points">${level.points.toLocaleString()} pts</div>
+                    </div>
+                `).join('');
+            }
+        });
+
+        function showLevelDetail(levelId) {
+            const level = window.levelsData.find(l => l.id === levelId);
+            const players = window.playersData || [];
+            if (level) {
+                const detailHTML = DetailManager.renderLevelDetail(level, players);
+                document.body.innerHTML = `
+                    <nav class="navbar">
+                        <div class="nav-container">
+                            <div class="nav-logo">DEMON LIST</div>
+                            <ul class="nav-menu">
+                                <li><a href="index.html" class="nav-link">Home</a></li>
+                                <li><a href="players.html" class="nav-link">Players</a></li>
+                                <li><a href="about.html" class="nav-link">About</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                    ${detailHTML}
+                `;
+            }
+        }
+
+        function showPlayerDetail(playerId) {
+            const player = window.playersData.find(p => p.id === playerId);
+            const levels = window.levelsData || [];
+            if (player) {
+                const detailHTML = DetailManager.renderPlayerDetail(player, levels);
+                document.body.innerHTML = `
+                    <nav class="navbar">
+                        <div class="nav-container">
+                            <div class="nav-logo">DEMON LIST</div>
+                            <ul class="nav-menu">
+                                <li><a href="index.html" class="nav-link">Home</a></li>
+                                <li><a href="players.html" class="nav-link">Players</a></li>
+                                <li><a href="about.html" class="nav-link">About</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                    ${detailHTML}
+                `;
+            }
+        }
+    </script>
 </body>
 </html>

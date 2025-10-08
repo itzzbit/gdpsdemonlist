@@ -1,6 +1,5 @@
 demon-list/
 ├── index.html
-├── levels.html
 ├── players.html
 ├── about.html
 ├── css/

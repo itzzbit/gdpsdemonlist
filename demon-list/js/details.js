@@ -1,14 +1,37 @@
 class DetailManager {
-  static renderLevelDetail(level) {
+  static renderLevelDetail(level, players) {
+    // Находим игроков, которые прошли этот уровень
+    const playersWhoPassed = players.filter(player => 
+      player.passedLevels.includes(level.id)
+    );
+
+    // Сортируем по рангу
+    playersWhoPassed.sort((a, b) => a.rank - b.rank);
+
+    const playersListHTML = playersWhoPassed.length > 0 ? `
+      <div class="players-list">
+        ${playersWhoPassed.map(player => `
+          <div class="player-item" onclick="showPlayerDetail(${player.id})">
+            <div class="player-rank">#${player.rank}</div>
+            <div class="player-info">
+              <div class="player-name">${player.username}</div>
+              <div class="player-country">${player.country}</div>
+            </div>
+            <div class="player-points">${player.points.toLocaleString()} pts</div>
+          </div>
+        `).join('')}
+      </div>
+    ` : '<p class="no-players">No players have completed this level yet.</p>';
+
     return `
       <div class="container fade-in">
-        <a href="levels.html" class="back-button">← Back to Levels</a>
+        <a href="index.html" class="back-button">← Back to Levels</a>
         
         <div class="detail-container">
           <div class="detail-header">
             <h1 class="detail-title">${level.name}</h1>
             <div class="detail-subtitle">by ${level.creator}</div>
-            <div class="level-position">Position: #${level.position}</div>
+            <div class="level-rank">Position: #${level.position}</div>
             <div class="level-points">${level.points.toLocaleString()} points</div>
           </div>
 
@@ -42,16 +65,12 @@ class DetailManager {
               <h3>Verification</h3>
               <p>Verified by ${level.verification.verifiedBy} on ${level.verification.verifiedAt}</p>
             ` : ''}
-            
-            ${level.youtubeLinks && level.youtubeLinks.length > 0 ? `
-              <h3>Videos</h3>
-              <div class="video-links">
-                ${level.youtubeLinks.map(link => `
-                  <a href="${link.url}" target="_blank" class="video-link">${link.title}</a>
-                `).join('')}
-              </div>
-            ` : ''}
           </div>
+        </div>
+
+        <div class="players-completed-section">
+          <h3 class="section-title">Completed By (${playersWhoPassed.length})</h3>
+          ${playersListHTML}
         </div>
 
         ${level.positionHistory && level.positionHistory.length > 0 ? `
@@ -92,10 +111,6 @@ class DetailManager {
 
           <div class="detail-stats">
             <div class="detail-stat">
-              <div class="detail-stat-value">${player.stats.totalLevels}</div>
-              <div class="detail-stat-label">Total Levels</div>
-            </div>
-            <div class="detail-stat">
               <div class="detail-stat-value">${passedLevels.length}</div>
               <div class="detail-stat-label">Levels Completed</div>
             </div>
@@ -104,20 +119,22 @@ class DetailManager {
               <div class="detail-stat-label">Hardest Level</div>
             </div>
             <div class="detail-stat">
-              <div class="detail-stat-value">${Math.round(player.stats.averagePoints).toLocaleString()}</div>
-              <div class="detail-stat-label">Avg Points</div>
+              <div class="detail-stat-value">${Math.round(player.points / passedLevels.length).toLocaleString()}</div>
+              <div class="detail-stat-label">Avg Points/Level</div>
             </div>
           </div>
 
           <div class="detail-content">
             <h3>Completed Levels</h3>
             ${passedLevels.length > 0 ? `
-              <div class="levels-grid">
+              <div class="levels-list">
                 ${passedLevels.map(level => `
-                  <div class="level-card" onclick="showLevelDetail(${level.id})">
-                    <div class="level-position">#${level.position}</div>
-                    <div class="level-name">${level.name}</div>
-                    <div class="level-creator">by ${level.creator}</div>
+                  <div class="level-item" onclick="showLevelDetail(${level.id})">
+                    <div class="level-rank">#${level.position}</div>
+                    <div class="level-info">
+                      <div class="level-name">${level.name}</div>
+                      <div class="level-creator">${level.creator}</div>
+                    </div>
                     <div class="level-points">${level.points.toLocaleString()} pts</div>
                   </div>
                 `).join('')}
